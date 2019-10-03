@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sneak'Addict - Details{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            {% for detail in sneaker %}
+            <div class="col-sm">
+
+        <div class="card" style="width: 500px; margin-top: 50px; margin-left: 70px; border: none;" >
+            <img src="{{ asset('images/white-shoes.jpeg') }}" class="card-img-top" alt="...">
+        </div>
+
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem; margin-top: 50px; border: none;" >
+                    <div class="card-body">
+                        <div class="card-title"> <b>{{ detail.titre }} </b></div>
+                        <div class="card-text">{{ detail.description }}</div>
+                        <span><button style="border: none; background-color: white; text-decoration: underline; float: right; font-size: small;margin-top: 10px;">Livraisons et retours gratuits*</button></span>
+                        <div class="card-text" style="margin-top: 10px"><span style="color : grey; font-size: medium; margin"><b>170,00€</b></span></div>
+                        <br>
+                        <div class="card-text" style="font-size: small"><b>COULEUR :</b> {{ detail.couleur }}</div>
+                        <br>
+                        <div class="card-text" style="font-size: small"><b>Taille :</b> <select style="border-radius: 30px; background-color: white">
+                                <option selected> Veuillez choisir</option>
+                                <option>EUR 31</option>
+                                <option>EUR 32</option>
+                                <option>EUR 33</option>
+                            </select></div>
+                        <a href="#" class="btn btn-dark" style="border-radius: 30px; width: 250px; margin-top: 50px;">Ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}

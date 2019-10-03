@@ -12,21 +12,46 @@
     </head>
 
     <body>
-        {% block body %}
-            <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-                <a class="navbar-brand" style="font-family: 'Permanent Marker', cursive; color : white; margin-left: 300px; font-size: 25px" href="#">Sneak'Addict</a>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style ="margin-left: 20px; margin-right: 20px">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link" style ="font-family: font-family : 'Rubik', sans-serif;color : white;" href="#"><b>HOMME</b></a>
-                        <a class="nav-item nav-link" style ="font-family: font-family : 'Rubik', sans-serif;color : white;" href="#"><b>FEMME</b></a>
+    {% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" style="font-family: 'Permanent Marker', cursive; color : white; margin-left: 300px; font-size: 25px" href="{{ path('products') }}">Sneak'Addict</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style ="margin-left: 20px; margin-right: 20px">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" style ="font-family: font-family : 'Rubik', sans-serif;color : white;" href="#"><b>HOMME</b></a>
+                <a class="nav-item nav-link" style ="font-family: font-family : 'Rubik', sans-serif;color : white;" href="#"><b>FEMME</b></a>
+
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" style="border-radius: 19px/50%; width: 800px">
+            <button class="btn btn-outline-dark" type="submit" style="border-radius: 30px;position: absolute; margin-left: 760px;border: none"><i class="fa fa-search"></i></button>
+        </form>
+                <div class="modal"  style=" padding-left: 1200px; padding-top: 15px" id="modal-box" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content" style="width: 400px">
+                            <div class="modal-header">
+                                <p style="font-size: small" class="modal-title"><a style =" text-decoration: underline;" href="{{ path('connexion') }}">Connexion</a> | <a style =" text-decoration: underline;" href={{path('inscription')}}>Créer un compte </a> </p>
+                                <button type="button" class="close" data-dismiss="modal"  id="close-modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">Mon compte</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Mes commandes</a>
+                                </div>
+                        </div>
                     </div>
                 </div>
-                <form class="form-inline" style="margin-right: 750px;">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" style="border-radius: 19px/50%; width: 500px">
-                    <button class="btn btn-outline-dark" type="submit" style="border-radius: 30px;position: absolute; margin-left: 459px;border: none"><i class="fa fa-search"></i></button>
-                </form>
+                <a id="account-btn"  class="nav-item nav-link" style ="color : white;" href="#"><i class="fa fa-user"></i></a>
+                <a  class="nav-item nav-link" style ="color : white;" href="#"><i class="fa fa-shopping-cart"></i></a>
+                <a  class="nav-item nav-link" style ="color : white; " href="#"><i class="fa fa-heart"></i></a>
 
-            </nav>
+            </div>
+        </div>
+
+
+    </nav>
+    {% endblock %}
+        {% block body %}
+
             <div class="jumbotron jumbotron-fluid" style="background-image :url('images/background-streetwear.jpg!d'); height : 600px ">
                 <div class="container">
                    <h1 style="color : white; text-align: center; margin-top: 20px">Vos marques préférées</h1>
@@ -34,7 +59,7 @@
                         <div class="col-sm">
                             <a href="#" style="text-decoration: none; color: black">
                                 <div class="card" style="width: 16rem;">
-                                    <img class="card-img-top" src={{ asset('images/nike-logo.jpg') }} >
+                                    <img class="card-img-top" style="border-bottom: 1px solid black" src={{ asset('images/nike-logo.jpg') }} >
                                     <div class="card-body">
                                         <p class="card-text" style="text-align: center;"> NIKE</p>
                                     </div>
@@ -44,9 +69,9 @@
                         <div class="col-sm">
                             <a href="#" style="text-decoration: none; color: black">
                             <div class="card" style="width: 16rem;">
-                                <img class="card-img-top" src={{ asset('images/nike-logo.jpg') }} >
+                                <img class="card-img-top" style="border-bottom: 1px solid black" src={{ asset('images/adidas.png') }} >
                                 <div class="card-body">
-                                    <p class="card-text" style="text-align: center;"> NIKE</p>
+                                    <p class="card-text" style="text-align: center;" > Adidas</p>
                                 </div>
                             </a>
                             </div>
@@ -55,21 +80,25 @@
                 <div class="col-sm">
                     <a href="#" style="text-decoration: none; color: black">
                         <div class="card" style="width: 16rem;">
-                            <img class="card-img-top" src={{ asset('images/nike-logo.jpg') }} >
+                            <img class="card-img-top" style="border-bottom: 1px solid black" src={{ asset('images/converse-logo.png') }} >
                             <div class="card-body">
-                                <p class="card-text" style="text-align: center;"> NIKE</p>
+                                <p class="card-text" style="text-align: center;"> Converse </p>
                             </div>
                     </a>
                 </div>
             </div>
                     </div>
                 </div>
+
             </div>
         {% endblock %}
         {% block javascripts %}
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="main.js"></script>
         {% endblock %}
     </body>
 </html>
