@@ -46,6 +46,11 @@ class Sneaker
      */
     private $marque;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prix;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +124,18 @@ class Sneaker
     public function setMarque(string $marque): self
     {
         $this->marque = $marque;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }
