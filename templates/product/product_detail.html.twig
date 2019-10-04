@@ -30,7 +30,9 @@
                                 <option>EUR 32</option>
                                 <option>EUR 33</option>
                             </select></div>
-                        <a href="#" class="btn btn-dark" style="border-radius: 30px; width: 250px; margin-top: 50px;">Ajouter au panier</a>
+                            <form action={{path('ajouter', {'id' : detail.id })}} method="post">
+                        <input href="#" class="btn btn-dark"  type="submit" name ="submitProduct" value="Ajouter au panier" style="border-radius: 30px; width: 250px; margin-top: 50px;">
+                        <form>
                     </div>
                 </div>
             </div>

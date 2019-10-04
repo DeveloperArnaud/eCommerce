@@ -27,9 +27,13 @@ class ProductController extends AbstractController
      */
     public function product_detail($id)
     {
+        try {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('App:Sneaker');
         $sneaker = $repo->findBy(array('id'=> $id));
+        } catch (PDOException $e)  {
+            return "Error :" .$e->getMessage();
+        }
         return $this->render('product/product_detail.html.twig', [
             'controller_name' => 'ProductController',
             'sneaker' => $sneaker

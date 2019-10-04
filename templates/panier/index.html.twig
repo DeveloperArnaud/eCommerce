@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+	<div class="container">
+				<div class="span9">
+                    <h2>Votre panier</h2>
+                    <form>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Référence</th>
+                                <th>Quantité</th>
+                                <th>Prix unitaire</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                <div class="media">
+                                        <img src={{asset('images/white-shoes.jpeg')}} style ="height : 70px; width : 70px"class="mr-3" alt="...">
+                                        <div class="media-body">
+                                        <br>
+                                                <b>Nike Solaris - Hydro Carbo E54 <b>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <select class="span1"><option>1</option></select>&nbsp;
+                                    <a href="#"><i class="icon-refresh"></i></a>
+                                    <a href="#"><i class="icon-trash"></i></a>
+                                </td>
+                                <td>333,33€</td>
+                             
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="media">
+                                        <img src={{asset('images/white-shoes.jpeg')}} style ="height : 70px; width : 70px"class="mr-3" alt="...">
+                                        <div class="media-body">
+                                        <br>
+                                                <b>Nike Solaris - Hydro Carbo E54 <b>
+                                        </div>
+                                    </div>
+                                </td>
+                                </td>
+                                <td>
+                                    <select class="span1"><option>1</option></select>&nbsp;
+                                    <a href="#"><i class="icon-refresh"></i></a>
+                                    <a href="#"><i class="icon-trash"></i></a>
+                                </td>                                
+                                <td>333,33€</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+    
+                <dl class="dl-horizontal pull-right">
+                    <dt>Total:</dt>
+                    <dd>999,99€</dd>
+                </dl>
+                <div class="clearfix"></div>
+                <a href="livraison.php" class="btn btn-success pull-right">Valider mon panier</a>
+                <a href= {{path('products')}} class="btn btn-primary">Continuer mes achats</a>
+            </div>
+		
+		</div>
+	</div>
+
+{% endblock %}

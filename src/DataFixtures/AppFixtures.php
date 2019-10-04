@@ -12,7 +12,7 @@ class AppFixtures extends Fixture
     {
 
         $faker = Faker\Factory::create('fr_FR');
-        for($i = 0 ; $i < 20 ; $i++) {
+        for($i = 0 ; $i < 2 ; $i++) {
             $sneaker = new Sneaker();
             $sneaker->setCouleur($faker->colorName);
             $sneaker->setDescription($faker->realText(200));
@@ -20,6 +20,10 @@ class AppFixtures extends Fixture
             $sneaker->setTaille($faker->randomFloat(1, 30, 45));
             $sneaker->setModele("Sport");
             $sneaker->setTitre("Nike ".$faker->text(15));
+            $commande = new Commande();
+            $commande->addProduit($sneaker);
+            $commande->setUser($user);
+            $sneaker->setCommande($commande);
             $manager->persist($sneaker);
             }
         $manager->flush();

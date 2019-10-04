@@ -4,13 +4,15 @@
 {% block nav %}{% endblock %}
 {% block body %}
     <a style="text-decoration: none; color: black" href={{ path('products') }}><h1 style="text-align: center; margin-top: 10px;font-family: 'Permanent Marker', cursive;">Sneak'Addict</h1></a>
-    {% if error %}
-        <div class="alert alert-danger" style="text-align: center; width : 600px;margin-left: 550px;margin-top: 30px;">
-            Vos identifiants sont incorrects !
+
+    <body style="background-color: #eee">
+    {% if message != "" %}
+        <div style= "text-align: center; width : 600px; margin-left: 550px"class="alert alert-danger">
+
+                {{ message }}
+
         </div>
     {% endif %}
-    <body style="background-color: #eee">
-
         <div style="background-color: white; text-align: center;height: 600px;width : 600px;margin-left: 550px; margin-top: 0px ">
 
             <form action="{{ path('login') }}" method="post">
@@ -19,13 +21,13 @@
                 <p style="font-size: medium" ><b>CONNEXION AVEC VOTRE ADRESSE E-MAIL</b></p>
                 <label style="margin-right: 250px; color: grey; font-size: small"><b>ADRESSE E-MAIL:</b></label>
                 <br>
-                <input style="margin-bottom: 10px; margin-top: 5px; width: 360px; height: 45px" value="{{ last_username }}" type="email" name="_username" required>
+                <input style="margin-bottom: 10px; margin-top: 5px; width: 360px; height: 45px" type="email" name="email" required>
                 <br>
                 <label style="margin-right: 260px; color: grey; font-size: small"><b>MOT DE PASSE:</b></label>
                 <br>
-                <input style="margin-bottom: 10px; margin-top: 5px; width: 360px; height: 45px"  name="_password" type="password" required>
+                <input style="margin-bottom: 10px; margin-top: 5px; width: 360px; height: 45px"  name="password" type="password" required>
                 <br>
-                <input type="submit" style="margin-bottom: 40px; margin-top: 20px; background-color: black; border: none; color: white; width: 320px; height : 45px" value="CONNEXION">
+                <input type="submit" name="submit" style="margin-bottom: 40px; margin-top: 20px; background-color: black; border: none; color: white; width: 320px; height : 45px" value="CONNEXION">
                 <br>
                 <a href="#" style="text-decoration: none; color: black; font-size: small;">Mot de passe oublié ? </a> | <a style="text-decoration: none; color: black; font-size: small;" href="{{ path('inscription') }}">Pas encore inscrit ?</a>
                 <hr>OU<hr>

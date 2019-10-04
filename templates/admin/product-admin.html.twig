@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" style="font-family: 'Permanent Marker', cursive; color : white; font-size: 25px" href="{{ path('products') }}">Sneak'Addict </a>  <p style="color : white; font-size : small">Admin<p>
+    </nav>
+{% endblock %}
+{% block body %}
+<ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href=>Mon compte</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href={{path('product-admin')}}>Les produits</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href={{path('users-admin')}}>Les utilisateurs</a>
+  </li>
+</ul>
+    <div>
+                   <table class="table" style="width : auto">
+                <thead>
+                    <tr>
+                    <th scope="col">Ref </th>
+                    <th scope="col">Modèle</th>
+                    <th contenteditable="true" scope="col">Description</th>
+                    <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+        <tbody>
+        {% for sneaker in sneakers %}
+            <tr>
+            <th scope="row">{{sneaker.id}}</th>
+            <td><div class="media">
+  <img style= " width : 100px; height : 100px"src={{asset('images/white-shoes.jpeg')}} class="mr-3" alt="..."><button style="position : absolute; width : 100px; height : 100px; opacity :0.5" class="btn btn-dark">Edit image</button></div>{{sneaker.titre}}</td>
+            <td>{{sneaker.description}}</td>
+            <td><button class="btn btn-primary" style="width : 100px"> Editer </button> <br>  <br><button class="btn btn-primary"> Supprimer </button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+           </div>
+{% endblock %}
+
+{% block content%}
+        
+
+{% endblock %}
