@@ -16,6 +16,9 @@
   <li class="nav-item">
     <a class="nav-link" href={{path('users-admin')}}>Les utilisateurs</a>
   </li>
+    <li class="nav-item">
+    <a class="nav-link" href={{path('orders-admin')}}>Les commandes</a>
+  </li>
 </ul>
     <div>
                    <table class="table">
@@ -23,7 +26,7 @@
                     <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nom complet</th>
-                    <th contenteditable="true" scope="col">E-mail</th>
+                    <th scope="col">E-mail</th>
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -54,13 +57,42 @@
                         
                         <h8><b>Commandes passées</b> </h8>
                             <br>
-                          Order 1 - Nike Solaris - Quantite : 1 - Prix : 200€ - Statut : Livré
-                          Order 2 - Nike Solaris - Quantite : 1 - Prix : 200€ - Statut : Livré
-                          Order 3 - Nike Solaris - Quantite : 1 - Prix : 200€ - Statut : Livré
+                          {% for detail in user.commandes %}
+                          <p>Commande {{detail.id}} - Statut : <b>{{ detail.statut }}</b> - <a data-toggle="modal" data-target="#exampleModalCenter" href="">Détails de la commande<p></a>
+                          <div style ="margin-top : 80px"class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalCenterTitle">Détails de la commande</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  {% for sneakerd in user.commandes %}
+                                    {% for detail in sneakerd.produits %}
+                                    <div class="media">
+                                    <img src={{asset('images/white-shoes.jpeg')}} style="width : 60px; height : 60px" class="mr-3" alt="...">
+                                    <div class="media-body">
+                                      <h5 class="mt-0">{{ detail.titre}} - Hydro Bak 541E</h5>
+                                      Quantité : 1 - Prix : {{detail.prix}} €
+                                    </div>
+                                  </div>
+                                      <br>
+                                  {% endfor %}
+                                  {% endfor %}
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {% endfor %}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                     </div>
                     </div>
                 </div>

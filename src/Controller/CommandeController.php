@@ -12,8 +12,12 @@ class CommandeController extends AbstractController
      */
     public function index()
     {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('App:Commande');
+        $commandes = $repo->findAll();
         return $this->render('commande/index.html.twig', [
             'controller_name' => 'CommandeController',
+            'commandes' => $commandes
         ]);
     }
 }

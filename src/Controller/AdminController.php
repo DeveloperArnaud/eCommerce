@@ -34,6 +34,20 @@ class AdminController extends AbstractController
             'users' => $users
         ]);
     }
+
+        /**
+     * @Route("/orders-admin", name="orders-admin")
+     */
+    public function ordersListAdmin()
+    {   
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('App:User');
+        $commandes = $repo->findAll();
+        return $this->render('admin/orders-admin.html.twig', [
+            'controller_name' => 'AdminController',
+            'users' => $commandes
+        ]);
+    }
 }
 
 
